@@ -1,0 +1,16 @@
+name: Compute Health Score
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run health score action
+        uses: ./.github/actions/health-score
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_path: coverage.xml
